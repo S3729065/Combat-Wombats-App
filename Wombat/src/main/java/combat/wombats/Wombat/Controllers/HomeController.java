@@ -14,9 +14,9 @@ import java.util.Map;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
-@RequestMapping("/index")
+@RequestMapping("/")
 public class HomeController {
-	@GetMapping("/")
+	@GetMapping("/index")
 	public void Index(Model model) {
 		Map<String, Integer> hm = new HashMap<>();
 		hm.put(INDEX_DIR_URL, 0);

@@ -11,19 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/carservices")
 public class CarController {
     CarController(CarDbo cars) {
         this._cars = cars;
     }
 
-    @GetMapping("/carservices")
-    public void GetCarServices(Model model) {
+    @RequestMapping("/carservices")
+    public string GetCarServices(Model model) {
     	Map<String, Integer> hm = new HashMap<>();
 		hm.put(CAR_SERVICES_DIR_URL, 0);
 		model.mergeAttributes(hm);
+		return CAR_SERVICES_DIR_URL;
 	}
 
-	public static String CAR_SERVICES_DIR_URL = "carservices.html";
+	public static String CAR_SERVICES_DIR_URL = "carservices";
+	@Autowired
+	private Car _carmodel;
     private final CarDbo _cars;
 }

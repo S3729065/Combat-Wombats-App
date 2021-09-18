@@ -14,14 +14,11 @@ import java.util.Map;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
-@RequestMapping("/")
 public class HomeController {
-	@GetMapping("/index")
-	public void Index(Model model) {
-		Map<String, Integer> hm = new HashMap<>();
-		hm.put(INDEX_DIR_URL, 0);
-		model.mergeAttributes(hm);
+	@RequestMapping("/index")
+	public String Index(Model model) {
+		return INDEX_DIR_URL;
 	}
 
-	public static String INDEX_DIR_URL = "index.html";
+	public static String INDEX_DIR_URL = "index";
 }

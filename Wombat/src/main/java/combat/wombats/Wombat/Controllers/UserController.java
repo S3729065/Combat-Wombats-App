@@ -16,19 +16,26 @@ public class UserController {
 		this._users = users;
 	}
 
-	@GetMapping("/userprofile")
-	public void GetUserProfile(Model model) {
+	@RequestMapping("/userprofile")
+	public String GetUserProfile(Model model) {
 		Map<String, Integer> hm = new HashMap<>();
 		hm.put(USER_PROFILE_DIR_URL, 0);
+		model.addAttribute("userprofile", Arrays.asList(
+			(new User("JonnyDoenut");
+			new User("KateFromTechSupport");
+			new User("DanielS28");
+			new User("MetabanksBlue");
+		));
 		model.mergeAttributes(hm);
+		return USER_PROFILE_DIR_URL;
 	}
 
-	@PostMapping("/user/{id}")
+	@PostMapping("/userprofile")
 	Optional<User> FindUser(@PathVariable int id) {
 		return _users.findById(id);
 	}
 
-	@PutMapping("/user/{id}")
+	@PutMapping("/userprofile/{id}")
 	Optional<User> UpdateUser(@PathVariable int id) {
 		return _users.findById(id)
 				.map(u -> {
@@ -37,6 +44,6 @@ public class UserController {
 				});
 	}
 
-	public static String USER_PROFILE_DIR_URL = "userprofile.html";
+	public static String USER_PROFILE_DIR_URL = "userprofile";
 	private final UserDbo _users;
 }

@@ -10,4 +10,7 @@ import java.util.List;
 public interface AccountDbo extends JpaRepository<Integer, Account> {
 	List<Account> FindAccount_sCompanyName(Company company_);
 	List<Account> FindAccount_sByUser(User user_);
+
+	List<CompanyDbo> _companies;
+	List <UserDbo> _users;
 }
